@@ -13,7 +13,6 @@ import { useParams } from "react-router-dom";
 function ArticleDetails() {
   const { slug } = useParams<{ slug: string }>();
   const { article, isLoading } = useArticle(slug!);
-  console.log(article);
   if (isLoading) {
     return <h2>Loading...</h2>;
   }

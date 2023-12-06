@@ -26,7 +26,6 @@ export const useArticles = ({
       queryClient.invalidateQueries(["posts"]);
     },
     onError: async () => {
-      console.log("onError");
     },
   });
 

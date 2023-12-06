@@ -5,7 +5,6 @@ import { useState } from "react";
 
 function Tags() {
   const { data, isLoading } = useTags();
-  console.log(data);
   const [showAll, setShowAll] = useState(false);
 
   // Function to toggle 'showAll'

@@ -12,6 +12,8 @@ import { SignUpCard } from "./pages/SignUp.tsx";
 import Root from "./routes/root.tsx";
 import ArticleDetails from "./pages/ArticleDetails.tsx";
 import { NextUIProvider } from "@nextui-org/react";
+import Profile from "./pages/Profile.tsx";
+import PostForm from "./components/PostForm.tsx";
 
 const router = createBrowserRouter([
   {
@@ -29,9 +31,18 @@ const router = createBrowserRouter([
         element: <LoginCard />,
       },
       {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/creating-new-post",
+        element: <PostForm />,
+      },
+      {
         path: "/signup",
         element: <SignUpCard />,
       },
+      
     ],
   },
 ]);
