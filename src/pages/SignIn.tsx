@@ -10,8 +10,8 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { useUserLogin } from "../hooks/useUserLogin";
-import { useNavigate } from "react-router";
 import { useUser } from "../stores/user";
+import { useNavigate } from "react-router-dom";
 
 export function LoginCard() {
   const [form, setForm] = useState({
@@ -19,7 +19,7 @@ export function LoginCard() {
     password: "",
   });
   const { mutate: $login } = useUserLogin();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const setLoggedIn = useUser((store) => store.setLoggedIn);
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,11 +29,13 @@ export function LoginCard() {
         //1. Save token in localStorage
         window.localStorage.setItem("conduit_jwt_token", response.token);
         //2. redirect to Home page
-        // navigate("/");
+        navigate("/");
         //3. update state of user
         setLoggedIn(true);
       },
-      onError: () => {},
+      onError: (err) => {
+        alert(err);
+      },
     });
   };
   return (
@@ -73,7 +75,7 @@ export function LoginCard() {
             </div>
           </CardBody>
           <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
+            <Button type="submit" variant="gradient" fullWidth>
               Sign In
             </Button>
             <Typography variant="small" className="mt-6 flex justify-center">

@@ -9,12 +9,11 @@ import { If, Else, Then } from "react-if";
 function Header() {
   const [openNav, setOpenNav] = useState(false);
   const isLoggedIn = useUser((store) => store.isLoggedIn);
-  useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
-  }, []);
+  const setLoggedIn = useUser((store) => store.setLoggedIn);
+  const handleLogout = () => {
+    window.localStorage.removeItem("conduit_jwt_token");
+    setLoggedIn(false);
+  };
   return (
     <div>
       <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-4 lg:px-8 lg:py-4 text-green-500 ">
@@ -43,14 +42,22 @@ function Header() {
                       size="sm"
                       className="hidden lg:inline-block"
                     >
-                      <Link to={`login`}>Settings</Link>
+                      <Link to={`creating-new-post`}>Creating new Post</Link>
                     </Button>
                     <Button
                       variant="text"
                       size="sm"
                       className="hidden lg:inline-block"
                     >
-                      <Link to={`signup`}>Profile</Link>
+                      <Link to={`profile`}>Profile</Link>
+                    </Button>
+                    <Button
+                      variant="text"
+                      size="sm"
+                      className="hidden lg:inline-block"
+                      onClick={handleLogout}
+                    >
+                      <Link to={`/`}>Logout</Link>
                     </Button>
                   </Then>
                   <Else>

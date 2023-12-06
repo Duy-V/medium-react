@@ -13,9 +13,7 @@ const CardList = () => {
     limit: 2,
     // tags: tags,
   });
-  console.log(data);
   const { posts = [] } = data;
-  console.log(posts);
   // const total = Math.ceil(metadata.total / metadata.limit) ?? 1;
 
   return (

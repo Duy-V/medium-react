@@ -16,7 +16,6 @@ type Props = {
 };
 const CardItem = ({ post }: Props) => {
   const { setSelectedArticle } = useSlugStore();
-  console.log(post);
   return (
     <div className="flex-1 bg-white rounded-lg shadow-md p-6 mb-8">
       <div className="flex items-start space-x-4">
